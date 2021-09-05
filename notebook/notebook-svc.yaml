@@ -1,0 +1,37 @@
+# https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-apiversion-definition-guide.html
+apiVersion:  apps/v1
+kind: Deployment
+metadata:
+  name: notebook-svc-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notebook-svc
+      env: uat
+  template:
+    metadata:
+        labels:
+          app: notebook-svc
+          env: uat
+    spec:
+      containers:
+        - name: notebook-svc
+          image: notebook:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http-port
+              containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: notebook-service
+spec:
+  selector:
+    app: notebook-svc
+    env: uat
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
