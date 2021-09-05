@@ -2,3 +2,6 @@ https://qingmu.io/2019/08/07/Run-eureka-cluster-on-kubernetes/#%E9%83%A8%E7%BD%B
 helm window 安装
 github 地址：
    https://github.com/helm/helm
+   release下载地址：
+    https://github.com/helm/helm/releases/tag/v3.6.3
+    helm3 ： 只需要下载客户端 不需要安装 trigger了
