@@ -1,0 +1,46 @@
+ "registry-mirrors": [
+    "https://sji1i20h.mirror.aliyuncs.com"
+  ],
+
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.302.b08-0.el7_9.x86_64
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
+flush privileges;
+
+nohup hive --service metastore>log.txt 2>&1 &
+nohup hive --service hiveserver2>log2.txt 2>&1 &
+
+export HBASE_MANAGES_ZK=false
+<property>
+    <name>hbase.rootdir</name>
+    <value>hdfs://hadoop000:9000/hbase</value>
+</property>
+<property>
+    <name>hbase.cluster.distributed</name>
+    <value>true</value>
+</property>
+<property>
+    <name>hbase.zookeeper.quorum</name>
+    <value>hadoop000</value>
+</property>
+
+hbase地址：
+http://192.168.214.140:16010
+hdfs地址:
+http://192.168.214.140:50070
+yarn地址：
+http://192.168.214.140:8088
+
+安装的sqoop版本：
+sqoop-1.4.6.bin__hadoop-2.0.4-alpha
+
+go第三方包地址：
+https://pkg.go.dev/gotest.tools/env
+
+
+
+
+
+
+
+
+
